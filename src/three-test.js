@@ -31,7 +31,7 @@ function MyThree() {
   const pmremGenerator = new THREE.PMREMGenerator( renderer );
   
   // set up the background
-  scene.background = new THREE.Color( '#dd0033' );
+  scene.background = new THREE.Color( '#75B2DF' );
   scene.environment = pmremGenerator.fromScene( new RoomEnvironment( renderer ), 0.04 ).texture;
   
   // set up controls
@@ -41,6 +41,9 @@ function MyThree() {
 			controls.update();
 			controls.enablePan = false;
 			controls.enableDamping = true;
+
+  // load object
+
 
 
 
@@ -52,7 +55,38 @@ function MyThree() {
     var geometry = new THREE.BoxGeometry(1, 1, 1);
     var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     var cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+    // scene.add(cube);
+
+      // load lights
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  scene.add(ambientLight);
+  
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+  directionalLight.position.set(1, 1, 1).normalize();
+  scene.add(directionalLight);
+
+    const loader = new GLTFLoader();
+
+    loader.load(
+      'models/turbo_engine/scene.gltf',
+      function(gltf) {
+        const model = gltf.scene;
+        model.position.set(0,0,0);
+        model.scale.set(1, 1, 1);
+        scene.add(model);
+        console.log('added to scene');
+      },
+      function (xhr) {
+        console.log((xhr.loaded / xhr.total * 100) + '% loaded');  // Optional: loading progress
+      },
+      function (error) {
+        console.error('Error loading moooodel:', error);
+      }
+    );
+  
+
+
+
     var animate = function () {
       requestAnimationFrame(animate);
     //   cube.rotation.x += 0.01;
