@@ -1,0 +1,11 @@
+Model Information:
+* title:	Parking Lot UF
+* source:	https://sketchfab.com/3d-models/parking-lot-uf-b820496c29b94bf3986fe6223d44fc8c
+* author:	hkang2 (https://sketchfab.com/hkang2)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Parking Lot UF" (https://sketchfab.com/3d-models/parking-lot-uf-b820496c29b94bf3986fe6223d44fc8c) by hkang2 (https://sketchfab.com/hkang2) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

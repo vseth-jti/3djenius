@@ -11,7 +11,7 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 
 import { useEffect, useRef } from "react";
 
-function MyThree() {
+function EngineObject() {
   const refContainer = useRef(null);
   
   
@@ -113,4 +113,4 @@ function MyThree() {
   );
 }
 
-export default MyThree
+export default EngineObject
