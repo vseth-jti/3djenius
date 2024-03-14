@@ -5,7 +5,7 @@ import React, {useState} from 'react';
 
 
 function App() {
-  const [showEngineObject, setShowEngineObject] = useState(false); // Start with EngineObject
+  const [showEngineObject, setShowEngineObject] = useState(true); // Start with EngineObject
 
   const toggleScene = () => {
     setShowEngineObject(!showEngineObject);
