@@ -5,6 +5,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { useEffect, useRef } from "react";
+import {cameraPosition} from "three/examples/jsm/nodes/accessors/CameraNode";
 
 function ParkingScene() {
   const refContainer = useRef(null);
@@ -25,13 +26,14 @@ function ParkingScene() {
   scene.environment = pmremGenerator.fromScene(new RoomEnvironment(renderer), 0.04).texture;
 
   useEffect(() => {
+     let carModel, personModel;
 
-  document.body.appendChild( renderer.domElement );
+     document.body.appendChild( renderer.domElement );
 
 
     const controls = new FirstPersonControls(camera, renderer.domElement);
     controls.movementSpeed = 1.2;
-    controls.lookSpeed = 0.2; 
+    controls.lookSpeed = 0.2;
     controls.lookVertical = true;
 
     refContainer.current && refContainer.current.appendChild(renderer.domElement);
@@ -61,9 +63,49 @@ function ParkingScene() {
       }
     );
 
+    loader.load(
+        'models/person/scene.gltf',
+        function (gltf) {
+          personModel = gltf.scene;
+          personModel.position.set(0, 0.15, 0.2);
+          personModel.scale.set(0.1, 0.1, 0.1);
+          scene.add(personModel);
+        },
+        undefined,
+        function (error) {
+          console.error('Error loading person model:', error);
+        }
+    );
+
+    loader.load(
+        'models/police_car/scene.gltf',
+        function (gltf) {
+          carModel = gltf.scene;
+          carModel.position.set(0.5, 0.15, 0.5);
+          carModel.rotation. y = -(Math.PI/3);
+          carModel.scale.set(0.07, 0.07, 0.07);
+          scene.add(carModel);
+        },
+        undefined,
+        function (error) {
+          console.error('Error loading car model:', error);
+        }
+    );
+
     const animate = function () {
       requestAnimationFrame(animate);
-      controls.update(clock.getDelta()); 
+
+        if (carModel && personModel) {
+            // collision detection
+            if (carModel.position.distanceTo(personModel.position) > 0.27) {
+                // move person forward
+                personModel.position.z += 0.001;
+                // Move car towards person
+                carModel.position.x -= 0.01; // Adjust as needed for speed and direction
+            }
+        }
+
+      controls.update(clock.getDelta());
       renderer.render(scene, camera);
     };
     animate();

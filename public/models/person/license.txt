@@ -1,0 +1,11 @@
+Model Information:
+* title:	Person
+* source:	https://sketchfab.com/3d-models/person-998c7b88b88e4db4b50548d14815a634
+* author:	deathlessvr (https://sketchfab.com/jumpintothelight)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Person" (https://sketchfab.com/3d-models/person-998c7b88b88e4db4b50548d14815a634) by deathlessvr (https://sketchfab.com/jumpintothelight) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
